@@ -70,3 +70,40 @@ assert first_non_repeating_letter('A') == 'A'
 assert first_non_repeating_letter('') == ''
 assert first_non_repeating_letter('abba') == ''
 assert first_non_repeating_letter('sTreSS') == 'T'
+
+
+# 5kyu Scramblies
+# Complete the function scramble(str1, str2) that returns true if a portion
+# of str1 characters can be rearranged to match str2, otherwise returns false.
+# Notes:
+# Only lower case letters will be used (a-z). No punctuation or digits will be included.
+# Performance needs to be considered.
+
+def scramble(s1, s2):
+    if len(s1) < len(s2):
+        return False
+
+    char_count = {}
+
+    for char in s1:
+        if char in char_count:
+            char_count[
+                char] += 1
+        else:
+            char_count[
+                char] = 1
+
+    for char in s2:
+        if char not in char_count or \
+                char_count[
+                    char] == 0:
+            return False
+        char_count[char] -= 1
+
+    return True
+
+assert scramble('rkqodlw', 'world') == True
+assert scramble('katas', 'steak') == False
+assert scramble('yyfywsumxbkppxuvrva', 'bwuxvkbv') == False
+
+
