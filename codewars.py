@@ -107,3 +107,35 @@ assert scramble('katas', 'steak') == False
 assert scramble('yyfywsumxbkppxuvrva', 'bwuxvkbv') == False
 
 
+# Trolls are attacking your comment section!
+# A common way to deal with this situation is to remove all of the vowels
+# from the trolls' comments, neutralizing the threat.
+# Your task is to write a function that takes a string and return
+# a new string with all vowels removed.
+# For example, the string "This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!".
+# Note: for this kata y isn't considered a vowel.
+vowels_lst = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+
+def disemvowel(text:str) -> str:
+    res = ''.join([char for char in text if char not in vowels_lst])
+    return res
+
+assert disemvowel("This website is for losers LOL!") == "Ths wbst s fr lsrs LL!"
+
+
+# 7 kyu Odd-Even String Sort
+# Given a string s, your task is to return another string such that even-indexed
+# and odd-indexed characters of s are grouped and the groups are space-separated.
+# Even-indexed group comes as first, followed by a space, and then by the odd-indexed part.
+def sort_my_string(s: str) -> str:
+    even_num_chars = ''
+    odd_num_chars = ''
+    for i, char in enumerate(s):
+        if i % 2 == 0:
+            even_num_chars += char
+        else:
+            odd_num_chars += char
+    res = even_num_chars + ' ' + odd_num_chars
+    return res
+
+assert sort_my_string("CodeWars") == "CdWr oeas"
