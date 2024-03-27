@@ -123,3 +123,19 @@ def disemvowel(text:str) -> str:
 assert disemvowel("This website is for losers LOL!") == "Ths wbst s fr lsrs LL!"
 
 
+# 7 kyu Odd-Even String Sort
+# Given a string s, your task is to return another string such that even-indexed
+# and odd-indexed characters of s are grouped and the groups are space-separated.
+# Even-indexed group comes as first, followed by a space, and then by the odd-indexed part.
+def sort_my_string(s: str) -> str:
+    even_num_chars = ''
+    odd_num_chars = ''
+    for i, char in enumerate(s):
+        if i % 2 == 0:
+            even_num_chars += char
+        else:
+            odd_num_chars += char
+    res = even_num_chars + ' ' + odd_num_chars
+    return res
+
+assert sort_my_string("CodeWars") == "CdWr oeas"
